@@ -1,9 +1,10 @@
 extends Node2D
 
+const Player = preload("res://Player.tscn")
+
 var borders = Rect2(1, 1, 38, 21)
 
 onready var tileMap = $TileMap
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,6 +14,11 @@ func _ready():
 func generate_level():
 	var walker = Walker.new(Vector2(19, 10), borders)
 	var map = walker.walk(500)
+	
+	var player = Player.instance()
+	add_child(player)
+	player.position = map.front() * 32
+	
 	walker.queue_free()
 	
 	for location in map:
