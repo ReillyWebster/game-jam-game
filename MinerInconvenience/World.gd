@@ -2,7 +2,6 @@ extends Node2D
 
 const Player = preload("res://Player.tscn")
 const ExitPoint = preload("res://Exit.tscn")
-const Wall = preload("res://Wall.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 
