@@ -1,7 +1,7 @@
 extends Node2D
 
-const Player = preload("res://Player.tscn")
-const ExitPoint = preload("res://Exit.tscn")
+const Player = preload("res://scenes/player/Player.tscn")
+const ExitPoint = preload("res://scenes/exit/Exit.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "TileMap",
 "class": "Walker",
 "language": "GDScript",
-"path": "res://Walker.gd"
+"path": "res://scenes/world/Walker.gd"
 } ]
 _global_script_class_icons={
 "Walker": ""
@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MinerInconvenience"
-run/main_scene="res://World.tscn"
+run/main_scene="res://scenes/world/World.tscn"
 config/icon="res://icon.png"
 
 [display]
