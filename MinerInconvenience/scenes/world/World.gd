@@ -2,8 +2,10 @@ extends Node2D
 
 const Player = preload("res://scenes/player/Player.tscn")
 const ExitPoint = preload("res://scenes/exit/Exit.tscn")
+const OreVein = preload("res://scenes/oreVein/OreVein.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
+var number_of_random_veins = 10
 
 onready var tileMap = $TileMap
 
@@ -39,6 +41,21 @@ func generate_level():
 			print ("Tile at x" + str(map_position.x) + " y" + str(map_position.y))
 			tileMap.set_cellv(map_position, 1)
 			pass
+	
+	var new_veins = map.duplicate()
+	new_veins.pop_front()
+	new_veins.pop_back()
+	
+	for deploy_vein in number_of_random_veins:
+		var map_position = randi() % new_veins.size()
+		var vein_position = new_veins[map_position] * 32
+		while vein_position == player.position or vein_position == exit.position:
+			map_position = randi() % new_veins.size()
+			vein_position = new_veins[map_position] * 32
+		var new_vein = OreVein.instance()
+		add_child(new_vein)
+		new_vein.position = vein_position
+	
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
