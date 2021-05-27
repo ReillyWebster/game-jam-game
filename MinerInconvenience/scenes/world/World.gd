@@ -3,12 +3,17 @@ extends Node2D
 const Player = preload("res://scenes/player/Player.tscn")
 const ExitPoint = preload("res://scenes/exit/Exit.tscn")
 const OreVein = preload("res://scenes/oreVein/OreVein.tscn")
+const HUD = preload("res://scenes/hud/HUD.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
 
+export var max_stamina = 50
+var current_stamina = max_stamina
+
 onready var tileMap = $TileMap
 onready var ySort = $YSort
+onready var hUD = $HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -61,6 +66,8 @@ func generate_level():
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
 		get_tree().reload_current_scene()
+	if event.is_action_pressed("ui_cancel"):
+		hUD.update_stamina(-1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

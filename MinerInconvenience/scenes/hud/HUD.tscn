@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://images/barHorizontal_yellow.png" type="Texture" id=1]
+[ext_resource path="res://images/barHorizontal_green.png" type="Texture" id=2]
+[ext_resource path="res://scenes/hud/HUD.gd" type="Script" id=3]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource( 3 )
+
+[node name="MC" type="MarginContainer" parent="."]
+anchor_right = 1.0
+margin_left = 20.0
+margin_top = 20.0
+margin_right = -20.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBC" type="HBoxContainer" parent="MC"]
+margin_right = 1240.0
+margin_bottom = 26.0
+
+[node name="StaminaBox" type="HBoxContainer" parent="MC/HBC"]
+margin_right = 1187.0
+margin_bottom = 26.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaBar" type="TextureProgress" parent="MC/HBC/StaminaBox"]
+margin_right = 200.0
+margin_bottom = 26.0
+value = 100.0
+texture_under = ExtResource( 1 )
+texture_progress = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StaminaCount" type="Label" parent="MC/HBC/StaminaBox"]
+margin_left = 204.0
+margin_top = 6.0
+margin_right = 241.0
+margin_bottom = 20.0
+text = "50/50"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MC/HBC"]
+margin_left = 1191.0
+margin_right = 1240.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GoldLabel" type="Label" parent="MC/HBC/VBoxContainer"]
+margin_right = 49.0
+margin_bottom = 14.0
+text = "Gold x0"
+align = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
