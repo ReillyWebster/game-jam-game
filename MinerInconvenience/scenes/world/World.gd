@@ -44,7 +44,6 @@ func generate_level():
 		var second_step = map_position
 		second_step.y -= 1 
 		if tileMap.get_cellv(map_position) != tileMap.INVALID_CELL and tileMap.get_cellv(second_step) != tileMap.INVALID_CELL:
-			print ("Tile at x" + str(map_position.x) + " y" + str(map_position.y))
 			tileMap.set_cellv(map_position, 1)
 			pass
 	
@@ -64,9 +63,9 @@ func generate_level():
 	
 
 func _input(event):
-	if event.is_action_pressed("ui_accept"):
+	if event.is_action_pressed("ui_home"):
 		get_tree().reload_current_scene()
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

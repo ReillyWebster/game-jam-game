@@ -26,7 +26,3 @@ func get_random_sprite():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	return rng.randi_range(1, 2)
-
-func _input(event):
-	if event.is_action_pressed("ui_accept"):
-		get_tree().reload_current_scene()
