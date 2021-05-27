@@ -8,6 +8,7 @@ var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
 
 onready var tileMap = $TileMap
+onready var ySort = $YSort
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,11 +20,11 @@ func generate_level():
 	var map = walker.walk(200)
 	
 	var player = Player.instance()
-	add_child(player)
+	ySort.add_child(player)
 	player.position = map.front() * 32
 	
 	var exit = ExitPoint.instance()
-	add_child(exit)
+	ySort.add_child(exit)
 	exit.position = map.back() * 32
 	
 	
@@ -53,7 +54,7 @@ func generate_level():
 			map_position = randi() % new_veins.size()
 			vein_position = new_veins[map_position] * 32
 		var new_vein = OreVein.instance()
-		add_child(new_vein)
+		ySort.add_child(new_vein)
 		new_vein.position = vein_position
 	
 
