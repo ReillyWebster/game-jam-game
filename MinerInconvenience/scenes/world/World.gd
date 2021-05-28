@@ -7,6 +7,10 @@ const HUD = preload("res://scenes/hud/HUD.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
+var exit_cost = 1
+var player
+var exit
+var map
 
 export var max_stamina = 50
 var current_stamina = max_stamina
@@ -22,16 +26,17 @@ func _ready():
 
 func generate_level():
 	var walker = Walker.new(Vector2(19, 10), borders)
-	var map = walker.walk(200)
+	map = walker.walk(300)
 	
-	var player = Player.instance()
+	player = Player.instance()
 	ySort.add_child(player)
 	player.position = map.front() * 32
 	
-	var exit = ExitPoint.instance()
+	exit = ExitPoint.instance()
 	ySort.add_child(exit)
 	exit.position = map.back() * 32
-	
+	exit.set_pyrite_cost(exit_cost)
+	exit.connect("player_exited_level", self, "_on_Player_exit")
 	
 	walker.queue_free()
 	
@@ -45,7 +50,6 @@ func generate_level():
 		second_step.y -= 1 
 		if tileMap.get_cellv(map_position) != tileMap.INVALID_CELL and tileMap.get_cellv(second_step) != tileMap.INVALID_CELL:
 			tileMap.set_cellv(map_position, 1)
-			pass
 	
 	var new_veins = map.duplicate()
 	new_veins.pop_front()
@@ -60,8 +64,16 @@ func generate_level():
 		var new_vein = OreVein.instance()
 		ySort.add_child(new_vein)
 		new_vein.position = vein_position
-	
 
+func _on_Player_exit():
+	for child in ySort.get_children():
+		child.queue_free()
+	for location in map:
+		tileMap.set_cellv(location, 0)
+	tileMap.update_bitmask_region(borders.position, borders.end)
+	generate_level()
+
+#TEST CONTROLS
 func _input(event):
 	if event.is_action_pressed("ui_home"):
 		get_tree().reload_current_scene()

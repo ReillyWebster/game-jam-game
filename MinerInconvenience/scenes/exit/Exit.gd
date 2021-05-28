@@ -1,5 +1,14 @@
 extends Area2D
 
+onready var pyriteLabel = $Label
+signal player_exited_level
+
+var pyrite_requirement = 0
+
 func _on_Exit_body_entered(body):
-	$ColorRect.color = Color(1, 1, 1, 1)
-	pass
+	if (body.get_name() == "Player"):
+		emit_signal("player_exited_level")
+
+func set_pyrite_cost(value):
+	pyrite_requirement = value
+	pyriteLabel.text = str(value)

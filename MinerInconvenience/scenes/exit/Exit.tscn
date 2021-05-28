@@ -20,4 +20,15 @@ __meta__ = {
 position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
+[node name="Label" type="Label" parent="."]
+margin_top = -14.1581
+margin_right = 32.0
+margin_bottom = -0.158123
+text = "TEST"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="body_entered" from="." to="." method="_on_Exit_body_entered"]
