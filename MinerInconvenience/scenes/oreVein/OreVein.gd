@@ -1,4 +1,4 @@
-extends StaticBody2D
+extends Area2D
 
 onready var vein_sprite = get_node("Sprite")
 
