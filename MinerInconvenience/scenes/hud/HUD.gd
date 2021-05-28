@@ -12,7 +12,7 @@ func _ready():
 	staminaCount.text = str(current_stamina)
 
 func set_stamina(value):
-	stamina_max
+	stamina_max = value
 
 func update_stamina(value):
 	if current_stamina + value <= 0:
