@@ -1,5 +1,11 @@
 extends KinematicBody2D
 
+signal swing_pickaxe
+
+func _process(delta: float) -> void:
+	if Input.get_action_strength("swing_pickaxe"):
+		emit_signal("swing_pickaxe")
+
 func _physics_process(delta: float) -> void:
 	var direction = get_player_direction()
 	move_and_slide(direction * 100)

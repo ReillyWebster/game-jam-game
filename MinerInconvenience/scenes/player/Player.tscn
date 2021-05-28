@@ -20,3 +20,4 @@ position = Vector2( 16, 16 )
 shape = SubResource( 1 )
 
 [node name="Pickaxe" parent="." instance=ExtResource( 3 )]
+position = Vector2( 16, 16 )

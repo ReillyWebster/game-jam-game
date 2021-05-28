@@ -33,13 +33,24 @@ tracks/1/keys = {
 "update": 0,
 "values": [ 0.0, -112.0 ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [node name="Pickaxe" type="Area2D"]
-rotation = -1.95477
+rotation = -1.46608
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-visible = false
 position = Vector2( 5, -8 )
 rotation = 1.5708
 scale = Vector2( 0.2, 0.2 )
@@ -54,5 +65,4 @@ scale = Vector2( 0.2, 0.2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "swing"
 anims/swing = SubResource( 2 )
