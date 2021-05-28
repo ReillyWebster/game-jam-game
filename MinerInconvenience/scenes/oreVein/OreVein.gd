@@ -26,3 +26,7 @@ func get_random_sprite():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
 	return rng.randi_range(1, 2)
+
+
+func _on_OreVein_area_entered(area: Area2D) -> void:
+	print("hit with pickaxe")
