@@ -21,12 +21,22 @@ onready var hUD = $HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
+	player = Player.instance()
+	ySort.add_child(player)
+	
+	exit = ExitPoint.instance()
+	ySort.add_child(exit)
+	
 	randomize()
 	generate_level()
 
 func destroy_level():
 	for child in ySort.get_children():
-		child.queue_free()
+		if child.name == "Player" || child.name == "Exit":
+			pass
+		else:
+			child.queue_free()
 	for location in tileMap.get_used_cells():
 		tileMap.set_cellv(location, 0)
 	for location in map:
@@ -37,12 +47,8 @@ func generate_level():
 	var walker = Walker.new(Vector2(19, 10), borders)
 	map = walker.walk(300)
 	
-	player = Player.instance()
-	ySort.add_child(player)
 	player.position = map.front() * 32
 	
-	exit = ExitPoint.instance()
-	ySort.add_child(exit)
 	exit.position = map.back() * 32
 	exit.set_pyrite_cost(exit_cost)
 	exit.connect("player_exited_level", self, "_on_Player_exit")
