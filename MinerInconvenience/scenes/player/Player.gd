@@ -2,16 +2,32 @@ extends KinematicBody2D
 
 signal swing_pickaxe
 
+const ACCELERATION = 500
+const MAX_SPEED = 120
+const FRICTION = 500
+
+var velocity = Vector2.ZERO
+
+onready var animationTree = $AnimationTree
+onready var animationState = animationTree.get("parameters/playback")
+	
 func _process(delta: float) -> void:
 	if Input.get_action_strength("swing_pickaxe"):
 		emit_signal("swing_pickaxe")
-
-func _physics_process(delta: float) -> void:
-	var direction = get_player_direction()
-	move_and_slide(direction * 100)
 	
-func get_player_direction():
-	var x_input = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
-	var y_input = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+func _physics_process(delta):
+	var input_vector = Vector2.ZERO
+	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
+	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
+	input_vector = input_vector.normalized()
 	
-	return Vector2(x_input, y_input)
+	if(input_vector != Vector2.ZERO):
+		animationTree.set("parameters/Idle/blend_position", input_vector)
+		animationTree.set("parameters/Run/blend_position", input_vector)
+		animationState.travel("Run")
+		velocity = velocity.move_toward(input_vector * MAX_SPEED, ACCELERATION * delta)
+	else:
+		velocity = velocity.move_toward(Vector2.ZERO, FRICTION * delta)
+		animationState.travel("Idle")
+	
+	velocity = move_and_slide(velocity)
