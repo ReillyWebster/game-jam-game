@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/OreVeinSpritesheet.png-2ca0a4b9b99eaedb7e7bbce6c6a109fa.stex"
+path="res://.import/yellow_button00.png-0aeea589d91acad9633db4fef2a455a7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/OreVeinSpritesheet.png"
-dest_files=[ "res://.import/OreVeinSpritesheet.png-2ca0a4b9b99eaedb7e7bbce6c6a109fa.stex" ]
+source_file="res://images/yellow_button00.png"
+dest_files=[ "res://.import/yellow_button00.png-0aeea589d91acad9633db4fef2a455a7.stex" ]
 
 [params]
 

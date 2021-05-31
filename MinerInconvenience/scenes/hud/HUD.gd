@@ -31,8 +31,10 @@ func update_stamina(value):
 
 func update_gold(value):
 	gold_count += value
+	$MC/HBC/VBoxContainer/HBoxContainer/GoldLabel.text = str(gold_count)
 	print("Gold count: " + str(gold_count))
 
 func update_pyrite(value):
 	pyrite_count += value
+	$MC/HBC/VBoxContainer/HBoxContainer2/PyriteLabel.text = str(pyrite_count)
 	print("Pyrite count: " + str(pyrite_count))

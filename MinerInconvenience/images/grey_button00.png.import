@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barHorizontal_yellow.png-eb875077dc4389e34659f811030929c5.stex"
+path="res://.import/grey_button00.png-4f2cf5427bdb5b430428974f6a840960.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/barHorizontal_yellow.png"
-dest_files=[ "res://.import/barHorizontal_yellow.png-eb875077dc4389e34659f811030929c5.stex" ]
+source_file="res://images/grey_button00.png"
+dest_files=[ "res://.import/grey_button00.png-4f2cf5427bdb5b430428974f6a840960.stex" ]
 
 [params]
 

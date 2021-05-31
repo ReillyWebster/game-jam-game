@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/PyriteVein1.png-fec47c320a02bbddcb719091de34e7a9.stex"
+path="res://.import/gold.png-43a2bd90ae14538f23b1137c5663463e.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/PyriteVein1.png"
-dest_files=[ "res://.import/PyriteVein1.png-fec47c320a02bbddcb719091de34e7a9.stex" ]
+source_file="res://images/gold.png"
+dest_files=[ "res://.import/gold.png-43a2bd90ae14538f23b1137c5663463e.stex" ]
 
 [params]
 

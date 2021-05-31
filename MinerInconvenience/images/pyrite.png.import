@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/barHorizontal_red.png-0129efe33e1f49c555259bbdffdb88bc.stex"
+path="res://.import/pyrite.png-1e3156ee518995de38c0bd1a617e0ca3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/barHorizontal_red.png"
-dest_files=[ "res://.import/barHorizontal_red.png-0129efe33e1f49c555259bbdffdb88bc.stex" ]
+source_file="res://images/pyrite.png"
+dest_files=[ "res://.import/pyrite.png-1e3156ee518995de38c0bd1a617e0ca3.stex" ]
 
 [params]
 
