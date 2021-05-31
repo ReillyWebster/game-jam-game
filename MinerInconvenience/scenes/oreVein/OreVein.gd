@@ -2,6 +2,8 @@ extends Area2D
 
 onready var vein_sprite = get_node("Sprite")
 
+signal vein_hit(vein_type)
+
 var gold_vein_texture = preload("res://images/GoldVein.png")
 var pyrite_vein_texture = preload("res://images/PyriteVein.png")
 
@@ -28,4 +30,5 @@ func get_random_sprite():
 	return rng.randi_range(1, 2)
 
 func _on_OreVein_area_entered(area: Area2D) -> void:
-	print("Hit ore")
+	emit_signal("vein_hit", veinType)
+	self.queue_free()

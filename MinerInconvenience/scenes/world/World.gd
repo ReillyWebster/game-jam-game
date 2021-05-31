@@ -11,8 +11,10 @@ var exit_cost = 1
 var player
 var exit
 var map
+var current_gold = 0
+var current_pyrite = 0
 
-export var max_stamina = 50
+export var max_stamina = 20
 var current_stamina = max_stamina
 
 onready var tileMap = $TileMap
@@ -80,10 +82,22 @@ func generate_level():
 		var new_vein = OreVein.instance()
 		ySort.add_child(new_vein)
 		new_vein.position = vein_position
+		new_vein.connect("vein_hit", self, "_on_Vein_hit")
 
 func _on_Player_exit():
-	destroy_level()
-	generate_level()
+	if current_pyrite >= exit_cost:
+		update_pyrite(-exit_cost)
+		exit_cost += 2
+		destroy_level()
+		generate_level()
+
+func _on_Vein_hit(vein_type):
+	print("Hit a " + str(vein_type) + " vein!")
+	if vein_type:
+		update_pyrite(1)
+	else:
+		update_gold(1)
+	update_stamina(-1)
 
 #TEST CONTROLS
 func _input(event):
@@ -91,6 +105,18 @@ func _input(event):
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
+
+func update_gold(value):
+	current_gold += value
+	hUD.update_gold(value)
+
+func update_pyrite(value):
+	current_pyrite += value
+	hUD.update_pyrite(value)
+
+func update_stamina(value):
+	current_stamina += value
+	hUD.update_stamina(value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

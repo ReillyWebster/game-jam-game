@@ -1,10 +1,13 @@
 extends CanvasLayer
 
-export var stamina_max = 50
+export var stamina_max = 20
 var current_stamina = stamina_max
 
 onready var staminaBar = $MC/HBC/StaminaBox/StaminaBar
 onready var staminaCount = $MC/HBC/StaminaBox/StaminaCount
+
+var gold_count = 0
+var pyrite_count = 0
 
 func _ready():
 	staminaBar.max_value = stamina_max
@@ -25,4 +28,11 @@ func update_stamina(value):
 	
 	staminaBar.value = current_stamina
 	staminaCount.text = str(current_stamina)
-	
+
+func update_gold(value):
+	gold_count += value
+	print("Gold count: " + str(gold_count))
+
+func update_pyrite(value):
+	pyrite_count += value
+	print("Pyrite count: " + str(pyrite_count))
