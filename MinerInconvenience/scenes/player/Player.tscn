@@ -874,4 +874,7 @@ position = Vector2( 16, 15 )
 shape = SubResource( 10 )
 disabled = true
 
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
 [editable path="Hitbox"]
