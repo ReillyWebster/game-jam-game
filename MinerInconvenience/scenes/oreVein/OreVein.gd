@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 onready var vein_sprite = get_node("Sprite")
 
@@ -29,6 +29,6 @@ func get_random_sprite():
 	rng.randomize()
 	return rng.randi_range(1, 2)
 
-func _on_OreVein_area_entered(area: Area2D) -> void:
+func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	emit_signal("vein_hit", veinType)
 	self.queue_free()
