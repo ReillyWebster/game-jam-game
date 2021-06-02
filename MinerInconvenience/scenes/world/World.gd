@@ -51,23 +51,25 @@ func generate_level():
 	
 	player.position = map.front() * 32
 	
-	exit.position = map.back() * 32
-	exit.set_pyrite_cost(exit_cost)
-	exit.connect("player_exited_level", self, "_on_Player_exit")
-	
 	walker.queue_free()
 	
 	for location in map:
 		tileMap.set_cellv(location, -1)
 	tileMap.update_bitmask_region(borders.position, borders.end)
 	
+	var exit_position = Vector2()
 	for map_position in map:
 		map_position.y -= 1
 		var second_step = map_position
 		second_step.y -= 1 
 		if tileMap.get_cellv(map_position) != tileMap.INVALID_CELL and tileMap.get_cellv(second_step) != tileMap.INVALID_CELL:
 			tileMap.set_cellv(map_position, 1)
+			exit_position = map_position
 			pass
+	
+	exit.position = exit_position * 32
+	exit.set_pyrite_cost(exit_cost)
+	exit.connect("player_in_exit_zone", self, "_on_Player_exit")
 	
 	var new_veins = map.duplicate()
 	new_veins.pop_front()
@@ -87,7 +89,7 @@ func generate_level():
 func _on_Player_exit():
 	if current_pyrite >= exit_cost:
 		update_pyrite(-exit_cost)
-		exit_cost += 2
+		exit_cost += 1
 		destroy_level()
 		generate_level()
 

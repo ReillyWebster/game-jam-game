@@ -25,7 +25,7 @@ anchor_right = 1.0
 margin_left = 20.0
 margin_top = 20.0
 margin_right = -20.0
-margin_bottom = 26.0
+margin_bottom = 174.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -82,7 +82,7 @@ alignment = 2
 [node name="GoldLabel" type="Label" parent="MC/HBC/VBoxContainer/HBoxContainer"]
 margin_right = 80.0
 margin_bottom = 100.0
-rect_min_size = Vector2( 80, 50 )
+rect_min_size = Vector2( 80, 20 )
 size_flags_vertical = 1
 custom_fonts/font = SubResource( 2 )
 text = "0"
