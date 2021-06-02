@@ -13,6 +13,7 @@ var exit
 var map
 var current_gold = 0
 var current_pyrite = 0
+var player_can_exit = false
 
 export var max_stamina = 20
 var current_stamina = max_stamina
@@ -69,7 +70,9 @@ func generate_level():
 	
 	exit.position = exit_position * 32
 	exit.set_pyrite_cost(exit_cost)
-	exit.connect("player_in_exit_zone", self, "_on_Player_exit")
+	exit.connect("player_in_exit_zone", self, "_on_Player_in_exit")
+	exit.connect("player_left_exit_zone", self, "_on_Player_left_exit")
+	
 	
 	var new_veins = map.duplicate()
 	new_veins.pop_front()
@@ -86,12 +89,11 @@ func generate_level():
 		new_vein.position = vein_position
 		new_vein.connect("vein_hit", self, "_on_Vein_hit")
 
-func _on_Player_exit():
-	if current_pyrite >= exit_cost:
-		update_pyrite(-exit_cost)
-		exit_cost += 1
-		destroy_level()
-		generate_level()
+func _on_Player_in_exit():
+	player_can_exit = true
+
+func _on_Player_left_exit():
+	player_can_exit = false
 
 func _on_Vein_hit(vein_type):
 	print("Hit a " + str(vein_type) + " vein!")
@@ -107,6 +109,15 @@ func _input(event):
 		get_tree().reload_current_scene()
 	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
+	if event.is_action_pressed("ui_accept") and player_can_exit:
+		exit_level()	
+
+func exit_level():
+	if current_pyrite >= exit_cost:
+		update_pyrite(-exit_cost)
+		exit_cost += 1
+		destroy_level()
+		generate_level()
 
 func update_gold(value):
 	current_gold += value
