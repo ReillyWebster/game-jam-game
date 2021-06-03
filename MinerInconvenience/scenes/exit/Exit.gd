@@ -9,6 +9,7 @@ var pyrite_requirement = 0
 func _on_Exit_body_entered(body):
 	if (body.get_name() == "Player"):
 		emit_signal("player_in_exit_zone")
+		$Label.visible = true
 
 func set_pyrite_cost(value):
 	pyrite_requirement = value
@@ -18,3 +19,4 @@ func set_pyrite_cost(value):
 func _on_Exit_body_exited(body):
 	if (body.get_name() == "Player"):
 		emit_signal("player_left_exit_zone")
+		$Label.visible = false

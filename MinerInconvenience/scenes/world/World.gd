@@ -130,6 +130,8 @@ func update_pyrite(value):
 func update_stamina(value):
 	current_stamina += value
 	hUD.update_stamina(value)
+	if current_stamina <= 0:
+		get_tree().change_scene("res://scenes/gameover/GameOver.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

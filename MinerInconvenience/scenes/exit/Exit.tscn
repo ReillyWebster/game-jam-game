@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/exit/Exit.gd" type="Script" id=1]
 [ext_resource path="res://images/Exit.png" type="Texture" id=2]
+[ext_resource path="res://Kenney Blocks.ttf" type="DynamicFontData" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 8 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 3 )
 
 [node name="Exit" type="Area2D"]
 collision_layer = 0
@@ -19,10 +24,11 @@ position = Vector2( 16, 40 )
 shape = SubResource( 1 )
 
 [node name="Label" type="Label" parent="."]
-margin_top = -14.1581
+visible = false
+margin_top = -32.0
 margin_right = 32.0
-margin_bottom = -0.158123
-text = "TEST"
+custom_fonts/font = SubResource( 2 )
+text = "0"
 align = 1
 valign = 1
 __meta__ = {
