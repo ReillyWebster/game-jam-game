@@ -96,8 +96,9 @@ func _input(event):
 func exit_level():
 	if Global.current_pyrite >= Global.exit_cost:
 		update_pyrite(-Global.exit_cost)
-		Global.exit_cost += 1
-		print(get_tree().current_scene)
+		Global.current_stage += 1
+		Global.exit_cost = ceil((Global.current_stage + 11)/2)
+		hUD.update_stage_counter()
 		get_tree().reload_current_scene()
 
 func update_gold(value):

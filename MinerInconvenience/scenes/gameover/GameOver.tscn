@@ -34,17 +34,17 @@ __meta__ = {
 }
 
 [node name="LblGameOver" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_top = 221.0
+margin_top = 209.0
 margin_right = 880.0
-margin_bottom = 371.0
+margin_bottom = 359.0
 custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 align = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-margin_top = 375.0
+margin_top = 363.0
 margin_right = 880.0
-margin_bottom = 475.0
+margin_bottom = 463.0
 alignment = 1
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
@@ -69,13 +69,20 @@ margin_right = 610.0
 margin_bottom = 100.0
 texture = ExtResource( 3 )
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 479.0
+[node name="BtnAgain" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 467.0
 margin_right = 880.0
-margin_bottom = 499.0
+margin_bottom = 487.0
 text = "Try Again?"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_Button_pressed"]
+[node name="BtnQuit" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 491.0
+margin_right = 880.0
+margin_bottom = 511.0
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnAgain" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/BtnQuit" to="." method="_on_BtnQuit_pressed"]

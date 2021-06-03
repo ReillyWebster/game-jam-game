@@ -49,7 +49,7 @@ func _input(event):
 	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
 	if event.is_action_pressed("ui_accept") and player_can_exit and Global.current_pyrite >= Global.exit_cost:
-		Global.current_gold = 0
-		Global.current_pyrite = 0
-		Global.current_stamina = Global.max_stamina
+		Global.current_pyrite -= 1
+		Global.current_stage += 1
+		Global.exit_cost = ceil((Global.current_stage + 11)/2)
 		get_tree().change_scene("res://scenes/world/World.tscn")
