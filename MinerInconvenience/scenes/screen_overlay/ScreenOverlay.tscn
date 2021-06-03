@@ -1,0 +1,102 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Shaders/xray_2d_mask.shader" type="Shader" id=1]
+[ext_resource path="res://scenes/world/World.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/screen_overlay/Cone.gd" type="Script" id=3]
+[ext_resource path="res://scenes/greyscale_overlay/GrayscaleOverlay.tscn" type="PackedScene" id=4]
+[ext_resource path="res://shaders/Grayscale.tres" type="Material" id=5]
+
+[sub_resource type="ViewportTexture" id=1]
+viewport_path = NodePath("XRayView/Viewport")
+
+[sub_resource type="ViewportTexture" id=2]
+viewport_path = NodePath("MaskView/Viewport")
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 1 )
+shader_param/dim_main_view = 0.2
+shader_param/alternate_viewport = SubResource( 1 )
+shader_param/mask_viewport = SubResource( 2 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("MainView/Viewport")
+
+[node name="ScreenOverlay" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = 640.0
+margin_bottom = 360.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MainView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="MainView"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="GreyscaleOverlay" parent="MainView/Viewport" instance=ExtResource( 4 )]
+
+[node name="Sprite" parent="MainView/Viewport/GreyscaleOverlay" index="0"]
+material = ExtResource( 5 )
+use_parent_material = true
+
+[node name="XRayView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="XRayView"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="World" parent="XRayView/Viewport" instance=ExtResource( 2 )]
+
+[node name="MaskView" type="ViewportContainer" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="MaskView"]
+size = Vector2( 1920, 1080 )
+transparent_bg = true
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Cone" type="Node2D" parent="MaskView/Viewport"]
+position = Vector2( 480, 540 )
+rotation = -1.0472
+script = ExtResource( 3 )
+
+[node name="Presentation" type="TextureRect" parent="."]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = SubResource( 4 )
+flip_v = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[editable path="MainView/Viewport/GreyscaleOverlay"]
