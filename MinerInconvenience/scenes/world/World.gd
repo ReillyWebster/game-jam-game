@@ -28,18 +28,6 @@ func _ready():
 	randomize()
 	generate_level()
 
-func destroy_level():
-	for child in ySort.get_children():
-		if child.name == "Player" || child.name == "Exit":
-			pass
-		else:
-			child.queue_free()
-	for location in tileMap.get_used_cells():
-		tileMap.set_cellv(location, 0)
-	for location in map:
-		tileMap.set_cellv(location, 0)
-	tileMap.update_bitmask_region(borders.position, borders.end)
-
 func generate_level():
 	var walker = Walker.new(Vector2(19, 10), borders)
 	map = walker.walk(300)
@@ -63,7 +51,6 @@ func generate_level():
 			pass
 	
 	exit.position = exit_position * 32
-	exit.set_pyrite_cost(Global.exit_cost)
 	exit.connect("player_in_exit_zone", self, "_on_Player_in_exit")
 	exit.connect("player_left_exit_zone", self, "_on_Player_left_exit")
 	
@@ -112,8 +99,6 @@ func exit_level():
 		Global.exit_cost += 1
 		print(get_tree().current_scene)
 		get_tree().reload_current_scene()
-		#destroy_level()
-		#generate_level()
 
 func update_gold(value):
 	Global.current_gold += value

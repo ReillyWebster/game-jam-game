@@ -32,3 +32,11 @@ func get_random_sprite():
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	emit_signal("vein_hit", veinType)
 	self.queue_free()
+
+func set_vein(vein_type):
+	if vein_type == "gold":
+		vein_sprite.set_texture(gold_vein_texture)
+		veinType = VeinType.Gold
+	else:
+		vein_sprite.set_texture(pyrite_vein_texture)
+		veinType = VeinType.Pyrite
