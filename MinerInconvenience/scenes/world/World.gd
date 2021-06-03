@@ -7,16 +7,10 @@ const HUD = preload("res://scenes/hud/HUD.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
-var exit_cost = 1
 var player
 var exit
 var map
-var current_gold = 0
-var current_pyrite = 0
 var player_can_exit = false
-
-export var max_stamina = 20
-var current_stamina = max_stamina
 
 onready var tileMap = $TileMap
 onready var ySort = $YSort
@@ -69,7 +63,7 @@ func generate_level():
 			pass
 	
 	exit.position = exit_position * 32
-	exit.set_pyrite_cost(exit_cost)
+	exit.set_pyrite_cost(Global.exit_cost)
 	exit.connect("player_in_exit_zone", self, "_on_Player_in_exit")
 	exit.connect("player_left_exit_zone", self, "_on_Player_left_exit")
 	
@@ -113,24 +107,26 @@ func _input(event):
 		exit_level()	
 
 func exit_level():
-	if current_pyrite >= exit_cost:
-		update_pyrite(-exit_cost)
-		exit_cost += 1
-		destroy_level()
-		generate_level()
+	if Global.current_pyrite >= Global.exit_cost:
+		update_pyrite(-Global.exit_cost)
+		Global.exit_cost += 1
+		print(get_tree().current_scene)
+		get_tree().reload_current_scene()
+		#destroy_level()
+		#generate_level()
 
 func update_gold(value):
-	current_gold += value
-	hUD.update_gold(value)
+	Global.current_gold += value
+	hUD.update_gold()
 
 func update_pyrite(value):
-	current_pyrite += value
-	hUD.update_pyrite(value)
+	Global.current_pyrite += value
+	hUD.update_pyrite()
 
 func update_stamina(value):
-	current_stamina += value
-	hUD.update_stamina(value)
-	if current_stamina <= 0:
+	Global.current_stamina += value
+	hUD.update_stamina()
+	if Global.current_stamina <= 0:
 		get_tree().change_scene("res://scenes/gameover/GameOver.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

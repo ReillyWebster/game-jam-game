@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Kenney Blocks.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/gameover/GameOver.gd" type="Script" id=2]
+[ext_resource path="res://images/gold.png" type="Texture" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -32,18 +33,46 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
-margin_top = 273.0
+[node name="LblGameOver" type="Label" parent="MarginContainer/VBoxContainer"]
+margin_top = 221.0
 margin_right = 880.0
-margin_bottom = 423.0
+margin_bottom = 371.0
 custom_fonts/font = SubResource( 1 )
 text = "GAME OVER"
 align = 1
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
-margin_top = 427.0
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+margin_top = 375.0
 margin_right = 880.0
-margin_bottom = 447.0
+margin_bottom = 475.0
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 270.0
+margin_right = 370.0
+margin_bottom = 100.0
+texture = ExtResource( 3 )
+
+[node name="LblTotalGold" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 374.0
+margin_top = 43.0
+margin_right = 506.0
+margin_bottom = 57.0
+text = "You died with x gold!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+margin_left = 510.0
+margin_right = 610.0
+margin_bottom = 100.0
+texture = ExtResource( 3 )
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+margin_top = 479.0
+margin_right = 880.0
+margin_bottom = 499.0
 text = "Try Again?"
 __meta__ = {
 "_edit_use_anchors_": false

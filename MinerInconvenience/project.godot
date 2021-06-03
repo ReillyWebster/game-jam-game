@@ -24,6 +24,10 @@ config/name="MinerInconvenience"
 run/main_scene="res://scenes/world/World.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://Global.gd"
+
 [display]
 
 window/size/width=1280

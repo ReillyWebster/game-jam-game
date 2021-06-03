@@ -1,40 +1,20 @@
 extends CanvasLayer
 
-export var stamina_max = 20
-var current_stamina = stamina_max
-
 onready var staminaBar = $MC/HBC/StaminaBox/StaminaBar
 onready var staminaCount = $MC/HBC/StaminaBox/StaminaCount
 
-var gold_count = 0
-var pyrite_count = 0
-
 func _ready():
-	staminaBar.max_value = stamina_max
-	staminaBar.value = current_stamina
-	staminaCount.text = str(current_stamina)
+	update_gold()
+	update_pyrite()
+	update_stamina()
 
-func set_stamina(value):
-	stamina_max = value
+func update_stamina():
+	staminaBar.value = Global.current_stamina
+	staminaBar.max_value = Global.max_stamina
+	staminaCount.text = str(Global.current_stamina)
 
-func update_stamina(value):
-	if current_stamina + value <= 0:
-		#Game Over Mechanic here
-		pass
-	elif current_stamina + value > stamina_max:
-		current_stamina = stamina_max
-	else:
-		current_stamina = current_stamina + value
-	
-	staminaBar.value = current_stamina
-	staminaCount.text = str(current_stamina)
+func update_gold():
+	$MC/HBC/VBoxContainer/HBoxContainer/GoldLabel.text = str(Global.current_gold)
 
-func update_gold(value):
-	gold_count += value
-	$MC/HBC/VBoxContainer/HBoxContainer/GoldLabel.text = str(gold_count)
-	print("Gold count: " + str(gold_count))
-
-func update_pyrite(value):
-	pyrite_count += value
-	$MC/HBC/VBoxContainer/HBoxContainer2/PyriteLabel.text = str(pyrite_count)
-	print("Pyrite count: " + str(pyrite_count))
+func update_pyrite():
+	$MC/HBC/VBoxContainer/HBoxContainer2/PyriteLabel.text = str(Global.current_pyrite)
