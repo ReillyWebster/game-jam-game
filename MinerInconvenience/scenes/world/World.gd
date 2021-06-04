@@ -12,12 +12,15 @@ var exit
 var map
 var player_can_exit = false
 
-onready var tileMap = $TileMap
-onready var ySort = $YSort
+onready var tileMap
+onready var ySort
+onready var maskView
 onready var hUD = $HUD
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	ySort = get_node("MainView/Viewport/YSort")
+	tileMap = get_node("MainView/Viewport/TileMap")
 	
 	player = Player.instance()
 	ySort.add_child(player)
