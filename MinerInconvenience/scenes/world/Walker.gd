@@ -18,7 +18,7 @@ func _init(starting_position, new_borders):
 
 func walk(steps):
 	for step in steps:
-		if randf() <= 0.25 and steps_since_turn >= 4 or steps_since_turn >= 8:
+		if randf() <= 0.25 and steps_since_turn >= 4 or steps_since_turn >= 6:
 			change_direction()
 		if step():
 			step_history.append(position)
@@ -46,7 +46,7 @@ func change_direction():
 		direction = directions.pop_front()
 
 func create_room(position):
-	var size = Vector2(randi() % 3 + 2, randi() % 4 + 2)
+	var size = Vector2(randi() % 3 + 1, randi() % 3 + 1)
 	var top_left_corner = (position - size / 2).ceil()
 	for y in size.y:
 		for x in size.x:

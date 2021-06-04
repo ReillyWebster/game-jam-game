@@ -7,16 +7,10 @@ const HUD = preload("res://scenes/hud/HUD.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
-var exit_cost = 1
 var player
 var exit
 var map
-var current_gold = 0
-var current_pyrite = 0
 var player_can_exit = false
-
-export var max_stamina = 20
-var current_stamina = max_stamina
 
 onready var tileMap = $TileMap
 onready var ySort = $YSort
@@ -33,18 +27,6 @@ func _ready():
 	
 	randomize()
 	generate_level()
-
-func destroy_level():
-	for child in ySort.get_children():
-		if child.name == "Player" || child.name == "Exit":
-			pass
-		else:
-			child.queue_free()
-	for location in tileMap.get_used_cells():
-		tileMap.set_cellv(location, 0)
-	for location in map:
-		tileMap.set_cellv(location, 0)
-	tileMap.update_bitmask_region(borders.position, borders.end)
 
 func generate_level():
 	var walker = Walker.new(Vector2(19, 10), borders)
@@ -69,7 +51,6 @@ func generate_level():
 			pass
 	
 	exit.position = exit_position * 32
-	exit.set_pyrite_cost(exit_cost)
 	exit.connect("player_in_exit_zone", self, "_on_Player_in_exit")
 	exit.connect("player_left_exit_zone", self, "_on_Player_left_exit")
 	
@@ -113,23 +94,26 @@ func _input(event):
 		exit_level()	
 
 func exit_level():
-	if current_pyrite >= exit_cost:
-		update_pyrite(-exit_cost)
-		exit_cost += 1
-		destroy_level()
-		generate_level()
+	if Global.current_pyrite >= Global.exit_cost:
+		update_pyrite(-Global.exit_cost)
+		Global.current_stage += 1
+		Global.exit_cost = ceil((Global.current_stage + 11)/2)
+		hUD.update_stage_counter()
+		get_tree().reload_current_scene()
 
 func update_gold(value):
-	current_gold += value
-	hUD.update_gold(value)
+	Global.current_gold += value
+	hUD.update_gold()
 
 func update_pyrite(value):
-	current_pyrite += value
-	hUD.update_pyrite(value)
+	Global.current_pyrite += value
+	hUD.update_pyrite()
 
 func update_stamina(value):
-	current_stamina += value
-	hUD.update_stamina(value)
+	Global.current_stamina += value
+	hUD.update_stamina()
+	if Global.current_stamina <= 0:
+		get_tree().change_scene("res://scenes/gameover/GameOver.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
