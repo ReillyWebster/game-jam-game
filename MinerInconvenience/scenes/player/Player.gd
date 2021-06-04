@@ -39,9 +39,10 @@ func _physics_process(delta):
 			swing_pickaxe_state(delta)
 	
 func set_cone_position():
-	if(get_tree().get_current_scene().get_name() == "World"):
-		coneTransform.position = self.position - headlamp.position 
-		coneTransform.rotation_degrees = headlamp.rotation_degrees 
+	pass
+#	if(get_tree().get_current_scene().get_name() == "World"):
+#		coneTransform.position = self.position - headlamp.position 
+#		coneTransform.rotation_degrees = headlamp.rotation_degrees 
 	
 func move_state(delta):
 	var input_vector = Vector2.ZERO
