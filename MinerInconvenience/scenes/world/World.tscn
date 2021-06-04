@@ -6,7 +6,7 @@
 [ext_resource path="res://scenes/world/Walker.gd" type="Script" id=4]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/greyscale_overlay/GrayscaleOverlay.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/screen_overlay/Cone.gd" type="Script" id=7]
+[ext_resource path="res://scenes/world/Cone.gd" type="Script" id=7]
 [ext_resource path="res://Shaders/xray_2d_mask.shader" type="Shader" id=8]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
