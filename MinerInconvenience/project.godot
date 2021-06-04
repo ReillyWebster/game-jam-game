@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="MinerInconvenience"
-run/main_scene="res://scenes/startingZone/StartingZone.tscn"
+run/main_scene="res://scenes/main_menu/StartMenu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
