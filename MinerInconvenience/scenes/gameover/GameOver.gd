@@ -1,7 +1,7 @@
 extends Control
 
 func _ready():
-	$MarginContainer/VBoxContainer/HBoxContainer/LblTotalGold.text = "You died with " + str(Global.current_gold) + " gold!"
+	pass
 
 func _on_Button_pressed():
 	Global.current_gold = 0

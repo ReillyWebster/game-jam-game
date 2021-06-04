@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=2]
+[gd_scene load_steps=70 format=2]
 
 [ext_resource path="res://images/Rock.png" type="Texture" id=1]
 [ext_resource path="res://images/wall_texture.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/oreVein/OreVein.tscn" type="PackedScene" id=7]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Kenney Blocks.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://scenes/startingZone/GreyScaleShader.tres" type="Material" id=10]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -673,17 +674,28 @@ __meta__ = {
 [node name="YSort" type="YSort" parent="."]
 
 [node name="OreVein" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 768, 352 )
+position = Vector2( 768, 360 )
 
 [node name="OreVein2" parent="YSort" instance=ExtResource( 7 )]
-position = Vector2( 512, 352 )
+position = Vector2( 512, 360 )
 
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 640, 528 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
-color = Color( 0.109418, 0.104675, 0.191406, 1 )
+color = Color( 0, 0, 0.176471, 1 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer"]
+visible = false
+material = ExtResource( 10 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [connection signal="player_in_exit_zone" from="Exit" to="." method="_on_Player_in_exit"]
 [connection signal="player_left_exit_zone" from="Exit" to="." method="_on_Player_left_exit"]
