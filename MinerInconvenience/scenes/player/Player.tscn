@@ -1,16 +1,17 @@
-[gd_scene load_steps=43 format=2]
+[gd_scene load_steps=44 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://images/player/soldier_tilesheet.png" type="Texture" id=2]
 [ext_resource path="res://scenes/hitboxes_hurtboxes/Hitbox.tscn" type="PackedScene" id=3]
 [ext_resource path="res://images/pickaxe_with_hands.png" type="Texture" id=4]
 [ext_resource path="res://images/pickaxe_with_hands2.png" type="Texture" id=5]
-[ext_resource path="res://images/Light.png" type="Texture" id=6]
 [ext_resource path="res://audio/footstep00.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/player/FootstepAudioPlayer.gd" type="Script" id=7]
+[ext_resource path="res://images/Light.png" type="Texture" id=8]
 
 [sub_resource type="CapsuleShape2D" id=1]
-height = 4.0
+radius = 12.0
+height = 0.0
 
 [sub_resource type="Animation" id=2]
 length = 0.5
@@ -74,20 +75,6 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("FootstepAudioPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "stop_audio"
-} ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -165,20 +152,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("FootstepAudioPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "stop_audio"
-} ]
-}
 
 [sub_resource type="Animation" id=4]
 length = 0.1
@@ -255,20 +228,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("FootstepAudioPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "stop_audio"
-} ]
-}
 
 [sub_resource type="Animation" id=5]
 length = 0.1
@@ -333,20 +292,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/5/type = "method"
-tracks/5/path = NodePath("FootstepAudioPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "stop_audio"
-} ]
-}
 
 [sub_resource type="Animation" id=6]
 length = 0.8
@@ -410,23 +355,6 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("FootstepAudioPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_audio"
-}, {
-"args": [  ],
-"method": "play_audio"
-} ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -504,23 +432,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("FootstepAudioPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_audio"
-}, {
-"args": [  ],
-"method": "play_audio"
-} ]
-}
 
 [sub_resource type="Animation" id=8]
 length = 0.8
@@ -597,23 +508,6 @@ tracks/5/keys = {
 "update": 1,
 "values": [ false ]
 }
-tracks/6/type = "method"
-tracks/6/path = NodePath("FootstepAudioPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
-"times": PoolRealArray( 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_audio"
-}, {
-"args": [  ],
-"method": "play_audio"
-} ]
-}
 
 [sub_resource type="Animation" id=9]
 length = 0.8
@@ -677,23 +571,6 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
-}
-tracks/5/type = "method"
-tracks/5/path = NodePath("FootstepAudioPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0.2, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
-"values": [ {
-"args": [  ],
-"method": "play_audio"
-}, {
-"args": [  ],
-"method": "play_audio"
-} ]
 }
 
 [sub_resource type="RectangleShape2D" id=10]
@@ -1488,6 +1365,6 @@ pitch_scale = 0.5
 script = ExtResource( 7 )
 
 [node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 6 )
+texture = ExtResource( 8 )
 
 [editable path="Hitbox"]

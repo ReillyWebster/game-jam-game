@@ -423,3 +423,6 @@ script = ExtResource( 4 )
 
 [node name="MiningAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 9 )
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color( 0, 0, 0.176471, 1 )
