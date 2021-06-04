@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://images/white.png" type="Texture" id=2]
+
+[node name="GrayscaleOverlay" type="Node2D"]
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 641, 356 )
+scale = Vector2( 1.5875, 1.18667 )
+texture = ExtResource( 2 )
