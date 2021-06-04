@@ -16,6 +16,7 @@ onready var tileMap
 onready var ySort
 onready var maskView
 onready var hUD = $HUD
+onready var miningAudio = $MiningAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -81,11 +82,14 @@ func _on_Player_left_exit():
 
 func _on_Vein_hit(vein_type):
 	print("Hit a " + str(vein_type) + " vein!")
+	miningAudio.play()
+	
 	if vein_type:
 		update_pyrite(1)
 	else:
 		update_gold(1)
 	update_stamina(-1)
+	
 
 #TEST CONTROLS
 func _input(event):
@@ -118,6 +122,3 @@ func update_stamina(value):
 	if Global.current_stamina <= 0:
 		get_tree().change_scene("res://scenes/gameover/GameOver.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass

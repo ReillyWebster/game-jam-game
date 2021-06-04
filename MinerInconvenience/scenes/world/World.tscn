@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://images/Rock.png" type="Texture" id=1]
 [ext_resource path="res://images/wall_texture.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/greyscale_overlay/GrayscaleOverlay.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/world/Cone.gd" type="Script" id=7]
 [ext_resource path="res://Shaders/xray_2d_mask.shader" type="Shader" id=8]
+[ext_resource path="res://audio/impactMetal_light_000.ogg" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -407,7 +408,7 @@ viewport_path = NodePath("MaskView/Viewport")
 [sub_resource type="ShaderMaterial" id=6]
 resource_local_to_scene = true
 shader = ExtResource( 8 )
-shader_param/dim_main_view = 0.263
+shader_param/dim_main_view = 0.596
 shader_param/alternate_viewport = SubResource( 4 )
 shader_param/mask_viewport = SubResource( 5 )
 
@@ -497,8 +498,15 @@ script = ExtResource( 7 )
 material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 6.34961
+margin_top = 3.1748
+margin_right = 1926.35
+margin_bottom = 1083.17
 texture = SubResource( 7 )
 flip_v = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="MiningAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 9 )
