@@ -17,28 +17,46 @@ var velocity = Vector2.ZERO
 onready var animationPlayer = $AnimationPlayer
 onready var animationTree = $AnimationTree
 onready var animationState = animationTree.get("parameters/playback")
+var coneTransform: Node2D
 	
 func _ready() -> void:
 	animationTree.active = true
-
+	coneTransform = get_tree().get_root().get_node("World/MaskView/Viewport/Cone")
+	
 func _process(delta: float) -> void:
 	if Input.get_action_strength("swing_pickaxe"):
 		emit_signal("swing_pickaxe")
 	
 func _physics_process(delta):
+	set_cone_position()
+	
 	match state:
 		player_state.MOVE: 
 			move_state(delta)
 		player_state.SWINGPICKAXE:
 			swing_pickaxe_state(delta)
 	
+func set_cone_position():
+	coneTransform.position = self.position
 	
+func set_cone_rotation(input_vector: Vector2):
+	if input_vector.x > 0:
+		coneTransform.rotation_degrees = 0
+	elif input_vector.x < 0:
+		coneTransform.rotation_degrees = 180
+		
+	if input_vector.y > 0:
+		coneTransform.rotation_degrees = 90
+	elif input_vector.y < 0:
+		coneTransform.rotation_degrees = 270
+
 func move_state(delta):
 	var input_vector = Vector2.ZERO
 	input_vector.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
 	input_vector.y = Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")
 	input_vector = input_vector.normalized()
 
+	set_cone_rotation(input_vector)
 	if(input_vector != Vector2.ZERO):
 		animationTree.set("parameters/Idle/blend_position", input_vector)
 		animationTree.set("parameters/Run/blend_position", input_vector)
