@@ -21,7 +21,8 @@ var coneTransform: Node2D
 	
 func _ready() -> void:
 	animationTree.active = true
-	coneTransform = get_tree().get_root().get_node("World/MaskView/Viewport/Cone")
+	if(get_tree().get_current_scene().get_name() == "World"):
+		coneTransform = get_tree().get_root().get_node("World/MaskView/Viewport/Cone")
 	
 func _process(delta: float) -> void:
 	if Input.get_action_strength("swing_pickaxe"):
@@ -37,18 +38,20 @@ func _physics_process(delta):
 			swing_pickaxe_state(delta)
 	
 func set_cone_position():
-	coneTransform.position = self.position
+	if(get_tree().get_current_scene().get_name() == "World"):
+		coneTransform.position = self.position
 	
 func set_cone_rotation(input_vector: Vector2):
-	if input_vector.x > 0:
-		coneTransform.rotation_degrees = 0
-	elif input_vector.x < 0:
-		coneTransform.rotation_degrees = 180
-		
-	if input_vector.y > 0:
-		coneTransform.rotation_degrees = 90
-	elif input_vector.y < 0:
-		coneTransform.rotation_degrees = 270
+	if(get_tree().get_current_scene().get_name() == "World"):
+		if input_vector.x > 0:
+			coneTransform.rotation_degrees = 0
+		elif input_vector.x < 0:
+			coneTransform.rotation_degrees = 180
+			
+		if input_vector.y > 0:
+			coneTransform.rotation_degrees = 90
+		elif input_vector.y < 0:
+			coneTransform.rotation_degrees = 270
 
 func move_state(delta):
 	var input_vector = Vector2.ZERO
