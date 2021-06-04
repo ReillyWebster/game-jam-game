@@ -1,2 +1,10 @@
 Cave Tileset - https://kxnai.itch.io/cave-tileset
+
+Character - https://kenney.nl/assets/platformer-characters
+
+Pickaxe - https://kenney.nl/assets/generic-items
+
+Pickaxe collision noise - https://kenney.nl/assets/impact-sounds
+
+Footsteps - https://kenney.nl/assets/rpg-audio
 Victory Photo by Simon Berger from Pexels
