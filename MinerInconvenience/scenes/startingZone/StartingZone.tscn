@@ -681,6 +681,10 @@ position = Vector2( 512, 352 )
 [node name="Player" parent="YSort" instance=ExtResource( 8 )]
 position = Vector2( 640, 528 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
+color = Color( 0.109418, 0.104675, 0.191406, 1 )
+
 [connection signal="player_in_exit_zone" from="Exit" to="." method="_on_Player_in_exit"]
 [connection signal="player_left_exit_zone" from="Exit" to="." method="_on_Player_left_exit"]
 [connection signal="vein_hit" from="YSort/OreVein" to="." method="_on_OreVein_vein_hit"]
