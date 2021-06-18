@@ -8,6 +8,7 @@ func _on_Button_pressed():
 	Global.current_gold = 0
 	Global.current_pyrite = 0
 	Global.current_stamina = Global.max_stamina
+	Global.exit_cost = 1;
 	get_tree().change_scene("res://scenes/startingZone/StartingZone.tscn")
 
 func _on_BtnQuit_pressed():
