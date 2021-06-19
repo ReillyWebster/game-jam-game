@@ -82,7 +82,6 @@ func _on_Player_left_exit():
 
 func _on_Vein_hit(vein_type):
 	print("Hit a " + str(vein_type) + " vein!")
-	miningAudio.play()
 	
 	if vein_type:
 		update_pyrite(1)

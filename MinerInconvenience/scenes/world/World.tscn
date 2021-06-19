@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://images/Rock.png" type="Texture" id=1]
 [ext_resource path="res://images/wall_texture.png" type="Texture" id=2]
 [ext_resource path="res://scenes/world/World.gd" type="Script" id=3]
 [ext_resource path="res://scenes/world/Walker.gd" type="Script" id=4]
 [ext_resource path="res://scenes/hud/HUD.tscn" type="PackedScene" id=5]
-[ext_resource path="res://audio/impactMetal_light_000.ogg" type="AudioStream" id=9]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 16, 0, 16, 16, 0, 16 )
@@ -420,9 +419,6 @@ tile_data = PoolIntArray( -524297, 0, 0, -524296, 0, 1, -524295, 0, 1, -524294, 
 script = ExtResource( 4 )
 
 [node name="YSort" type="YSort" parent="."]
-
-[node name="MiningAudio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource( 9 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 color = Color( 0, 0, 0.176471, 1 )

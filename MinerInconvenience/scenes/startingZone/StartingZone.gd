@@ -36,10 +36,8 @@ func _on_Player_left_exit():
 func _on_OreVein_vein_hit(vein_type):
 	if vein_type:
 		update_pyrite(1)
-		$HelpFile/LblPyrite.queue_free()
 	else:
 		update_gold(1)
-		$HelpFile/LblGold.queue_free()
 	update_stamina(-1)
 
 #TEST CONTROLS

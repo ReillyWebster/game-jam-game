@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/oreVein/OreVein.gd" type="Script" id=1]
 [ext_resource path="res://images/PyriteVein.png" type="Texture" id=2]
 [ext_resource path="res://scenes/hitboxes_hurtboxes/Hurtbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://audio/impactMetal_light_000.ogg" type="AudioStream" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 8 )
@@ -31,6 +32,9 @@ collision_mask = 4
 [node name="CollisionShape2D" parent="Hurtbox" index="0"]
 position = Vector2( 16, 8 )
 shape = SubResource( 2 )
+
+[node name="MiningAudio" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
 

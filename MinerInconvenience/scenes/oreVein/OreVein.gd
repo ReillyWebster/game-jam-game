@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var vein_sprite = get_node("Sprite")
+onready var mining_audio = $MiningAudio
 
 signal vein_hit(vein_type)
 
@@ -31,6 +32,8 @@ func get_random_sprite():
 
 func _on_Hurtbox_area_entered(area: Area2D) -> void:
 	emit_signal("vein_hit", veinType)
+	$MiningAudio.play()
+	yield($MiningAudio, "finished")
 	self.queue_free()
 
 func set_vein(vein_type):
