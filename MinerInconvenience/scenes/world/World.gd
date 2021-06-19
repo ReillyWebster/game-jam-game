@@ -104,9 +104,12 @@ func exit_level():
 	if Global.current_pyrite >= Global.exit_cost:
 		update_pyrite(-Global.exit_cost)
 		Global.current_stage += 1
-		Global.exit_cost = ceil((Global.current_stage + 11)/2)
-		hUD.update_stage_counter()
-		get_tree().reload_current_scene()
+		if Global.current_stage == 0:
+			get_tree().change_scene("res://scenes/victoryScreen/VictoryScreen.tscn")
+		else:
+			Global.exit_cost = ceil((Global.current_stage + 11)/2)
+			hUD.update_stage_counter()
+			get_tree().reload_current_scene()
 
 func update_gold(value):
 	Global.current_gold += value
