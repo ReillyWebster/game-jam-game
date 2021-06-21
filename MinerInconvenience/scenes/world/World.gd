@@ -4,6 +4,7 @@ const Player = preload("res://scenes/player/Player.tscn")
 const ExitPoint = preload("res://scenes/exit/Exit.tscn")
 const OreVein = preload("res://scenes/oreVein/OreVein.tscn")
 const HUD = preload("res://scenes/hud/HUD.tscn")
+const PauseScreen = preload("res://scenes/pauseMenu/PauseMenu.tscn")
 
 var borders = Rect2(1, 1, 38, 21)
 var number_of_random_veins = 10
@@ -92,8 +93,10 @@ func _on_Vein_hit(vein_type):
 
 #TEST CONTROLS
 func _input(event):
-	if event.is_action_pressed("ui_home"):
-		get_tree().reload_current_scene()
+	if event.is_action_pressed("ui_menu"):
+		var pauseScreen = PauseScreen.instance()
+		$HUD.add_child(pauseScreen)
+		get_tree().paused = true
 	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
 	if event.is_action_pressed("ui_accept") and player_can_exit:

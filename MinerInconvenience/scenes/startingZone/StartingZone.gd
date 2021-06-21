@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var hUD = $HUD
+const PauseScreen = preload("res://scenes/pauseMenu/PauseMenu.tscn")
 
 var player_can_exit = false
 
@@ -42,8 +43,10 @@ func _on_OreVein_vein_hit(vein_type):
 
 #TEST CONTROLS
 func _input(event):
-	if event.is_action_pressed("ui_home"):
-		get_tree().reload_current_scene()
+	if event.is_action_pressed("ui_menu"):
+		var pauseScreen = PauseScreen.instance()
+		$HUD.add_child(pauseScreen)
+		get_tree().paused = true
 	if event.is_action_pressed("ui_focus_next"):
 		hUD.update_stamina(-1)
 	if event.is_action_pressed("ui_accept") and player_can_exit and Global.current_pyrite >= Global.exit_cost:
