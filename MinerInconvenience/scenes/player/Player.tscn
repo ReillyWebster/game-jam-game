@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://images/player/soldier_tilesheet.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://audio/footstep00.ogg" type="AudioStream" id=6]
 [ext_resource path="res://scenes/player/FootstepAudioPlayer.gd" type="Script" id=7]
 [ext_resource path="res://images/Light.png" type="Texture" id=8]
+[ext_resource path="res://audio/Wandering Souls Loop Master.wav" type="AudioStream" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 12.0
@@ -1366,5 +1367,10 @@ script = ExtResource( 7 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 8 )
+
+[node name="BackgroundAudioPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -35.0
+autoplay = true
 
 [editable path="Hitbox"]

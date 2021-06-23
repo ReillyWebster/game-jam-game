@@ -18,6 +18,7 @@ onready var ySort = $YSort
 onready var maskView
 onready var hUD = $HUD
 onready var miningAudio = $MiningAudio
+onready var backgroundAudio = $BackgroundAudio
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -1,5 +1,7 @@
 extends Control
 
+onready var menuMusic = $MenuMusic
+
 func _on_Button_pressed():
 	Global.current_gold = 0
 	Global.current_pyrite = 0

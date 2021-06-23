@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Wandering Souls Master.wav-b76e4c8d1f01e110afc6b2e216ffaea9.sample"
+
+[deps]
+
+source_file="res://audio/Wandering Souls Master.wav"
+dest_files=[ "res://.import/Wandering Souls Master.wav-b76e4c8d1f01e110afc6b2e216ffaea9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0
