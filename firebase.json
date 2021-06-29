@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "MinerInconvenienceWebPage",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
